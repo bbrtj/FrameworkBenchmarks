@@ -55,6 +55,6 @@ installed.
 
 # Expert contact
 
-@bbrtj (contact@bbrtj.eu)
+@bbrtj (bbrtj.pro@gmail.com)
 @naturalist (minimal@cpan.org)
 
