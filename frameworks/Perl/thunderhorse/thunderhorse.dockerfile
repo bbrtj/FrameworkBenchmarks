@@ -8,13 +8,16 @@ RUN apt-get update -yqq && apt-get install -yqq nginx
 WORKDIR /thunderhorse
 
 RUN cpanm --notest --no-man-page \
-	Thunderhorse@0.100 \
+	Thunderhorse@0.102 \
 	DBI@1.647 \
 	DBD::MariaDB@1.24 \
 	Cpanel::JSON::XS@4.38 \
 	MooX::TypeTiny@0.002003 \
-	MooX::XSConstructor@0.003000 \
+	# MooX::XSConstructor@0.003000 \
 	Class::XSAccessor@1.19 \
+	Future::XS \
+	EV@4.22 \
+	IO::Async::Loop::EV \
 	Type::Tiny::XS@0.025
 
 ADD ./ /thunderhorse/
@@ -24,6 +27,7 @@ ENV DATABASE=$TFB_TEST_DATABASE
 ENV MAX_REQS=100000
 ENV SOCKET_FILE=/tmp/perl-thunderhorse.sock
 ENV PROXY_PORT=8181
+ENV LIBEV_FLAGS=4
 
 EXPOSE 8080
 
